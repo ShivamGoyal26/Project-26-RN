@@ -1,5 +1,7 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { ActivityIndicator, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 
 // Files
 import { Input } from "@/components/ui/input";
@@ -11,7 +13,9 @@ import { User } from "@/lib/icons/User";
 import { Lock } from "@/lib/icons/Lock";
 import { Eye } from "@/lib/icons/Eye";
 import { EyeOff } from "@/lib/icons/EyeOff";
-import { useState } from "react";
+import { login } from "../services/login.service";
+import useGetUser from "@/hooks/useGetUser";
+import { useAuthStore } from "@/store/useAuthStore";
 
 const LoginForm = () => {
   const {
@@ -32,7 +36,29 @@ const LoginForm = () => {
 
   const [secure, setSecure] = useState(true);
 
-  const onLoginPress: SubmitHandler<LoginValues> = async (data) => {};
+  const userId = useAuthStore((state) => state.userId);
+  const setUserId = useAuthStore((state) => state.setUserId);
+
+  const { data, isPending: penin, error } = useGetUser(userId);
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: login,
+    onSuccess(response, payload) {
+      console.log(response);
+      setUserId("2");
+    },
+    onError(error, variables, context) {
+      console.error(error);
+      // toast({
+      //   variant: "destructive",
+      //   description: "Something went wrong. Please try again.",
+      // });
+    },
+  });
+
+  const onLoginPress: SubmitHandler<LoginValues> = async (data) => {
+    mutate(data);
+  };
 
   return (
     <View>
@@ -42,6 +68,7 @@ const LoginForm = () => {
         render={({ field }) => (
           <>
             <Input
+              infoMessage="Username is required"
               LeftIcon={() => <User className="mr-2 text-primary" size={20} />}
               field={field}
               trigger={trigger}
@@ -60,6 +87,7 @@ const LoginForm = () => {
         render={({ field }) => (
           <>
             <Input
+              infoMessage="Password is required"
               secureTextEntry={secure}
               LeftIcon={() => <Lock className="mr-2 text-primary" size={20} />}
               field={field}
@@ -88,7 +116,8 @@ const LoginForm = () => {
         onPress={handleSubmit(onLoginPress)}
         className="mt-10"
         variant={"default"}
-        // disabled={true}
+        disabled={isPending}
+        loading={isPending}
       >
         <Text className="font-bold">Login</Text>
       </Button>

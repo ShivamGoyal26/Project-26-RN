@@ -5,12 +5,13 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import * as SplashScreen from "expo-splash-screen";
+import { PortalHost } from "@rn-primitives/portal";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Files
 import { NAV_THEME } from "../lib/constants";
 import useIntializeApp from "@/hooks/useIntializeApp";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -37,12 +38,20 @@ export default function RootLayout() {
   if (!isAppReady) {
     return null;
   }
-  console.log("Root ");
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <SafeAreaProvider>
-          <SafeAreaView edges={["top"]} style={{ flex: 1 }}>
+          <SafeAreaView
+            edges={["top"]}
+            style={{
+              flex: 1,
+              backgroundColor: isDarkColorScheme
+                ? DARK_THEME.colors.background
+                : LIGHT_THEME.colors.background,
+            }}
+          >
             <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
             {/* <Stack.Screen
               name="index"
@@ -52,6 +61,7 @@ export default function RootLayout() {
               }}
             /> */}
             <Stack screenOptions={{ headerShown: false }} />
+            <PortalHost />
           </SafeAreaView>
         </SafeAreaProvider>
       </ThemeProvider>
