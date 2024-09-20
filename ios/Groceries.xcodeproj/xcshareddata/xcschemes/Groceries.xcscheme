@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "StarterBase.app"
-               BlueprintName = "StarterBase"
-               ReferencedContainer = "container:StarterBase.xcodeproj">
+               BuildableName = "Groceries.app"
+               BlueprintName = "Groceries"
+               ReferencedContainer = "container:Groceries.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "StarterBaseTests.xctest"
-               BlueprintName = "StarterBaseTests"
-               ReferencedContainer = "container:StarterBase.xcodeproj">
+               BuildableName = "GroceriesTests.xctest"
+               BlueprintName = "GroceriesTests"
+               ReferencedContainer = "container:Groceries.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "StarterBase.app"
-            BlueprintName = "StarterBase"
-            ReferencedContainer = "container:StarterBase.xcodeproj">
+            BuildableName = "Groceries.app"
+            BlueprintName = "Groceries"
+            ReferencedContainer = "container:Groceries.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "StarterBase.app"
-            BlueprintName = "StarterBase"
-            ReferencedContainer = "container:StarterBase.xcodeproj">
+            BuildableName = "Groceries.app"
+            BlueprintName = "Groceries"
+            ReferencedContainer = "container:Groceries.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

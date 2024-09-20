@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Starter Base",
+    "name": "Groceries",
     "slug": "starter-base",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,16 +12,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.groceries.in"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.groceries.in"
@@ -32,7 +30,18 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "assets/fonts/Raleway-Bold.ttf",
+            "assets/fonts/Raleway-Medium.ttf",
+            "assets/fonts/Raleway-Regular.ttf",
+            "assets/fonts/Raleway-SemiBold.ttf"
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

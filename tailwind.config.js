@@ -7,6 +7,12 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
+      fontFamily: {
+        "raleway-regular": ["Raleway-Regular"],
+        "raleway-bold": ["Raleway-Bold"],
+        "raleway-semibold": ["Raleway-SemiBold"],
+        "raleway-medium": ["Raleway-Medium"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

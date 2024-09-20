@@ -9,7 +9,8 @@
       "@containers/*": ["src/containers/*"],
       "@libs/*": ["src/libs/*"],
       "@services/*": ["src/services/*"],
-      "@app/*": ["src/app/*"]
+      "@app/*": ["src/app/*"],
+      "@constants/*": ["src/constants/*"]
     }
   },
   "include": [
