@@ -4,14 +4,13 @@ import { Theme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
-import { PortalHost } from "@rn-primitives/portal";
 import * as SplashScreen from "expo-splash-screen";
-import * as Font from "expo-font";
 
 // Files
 import { NAV_THEME } from "../lib/constants";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import useIntializeApp from "@/hooks/useIntializeApp";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -21,6 +20,8 @@ const DARK_THEME: Theme = {
   dark: true,
   colors: NAV_THEME.dark,
 };
+
+export const queryClient = new QueryClient();
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -36,19 +37,24 @@ export default function RootLayout() {
   if (!isAppReady) {
     return null;
   }
+  console.log("Root ");
   return (
-    <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{
-            title: "Starter Base",
-            headerRight: () => <ThemeToggle />,
-          }}
-        />
-      </Stack>
-      <PortalHost />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+        <SafeAreaProvider>
+          <SafeAreaView edges={["top"]} style={{ flex: 1 }}>
+            <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+            {/* <Stack.Screen
+              name="index"
+              options={{
+                title: "Starter Base",
+                headerRight: () => <ThemeToggle />,
+              }}
+            /> */}
+            <Stack screenOptions={{ headerShown: false }} />
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }

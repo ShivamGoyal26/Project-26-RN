@@ -10,7 +10,8 @@
       "@libs/*": ["src/libs/*"],
       "@services/*": ["src/services/*"],
       "@app/*": ["src/app/*"],
-      "@constants/*": ["src/constants/*"]
+      "@constants/*": ["src/constants/*"],
+      "@api/*": ["src/api/*"]
     }
   },
   "include": [
