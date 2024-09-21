@@ -31,6 +31,7 @@
     "expo": "^51.0.24",
     "expo-font": "~12.0.10",
     "expo-linking": "~6.3.1",
+    "expo-location": "~17.0.1",
     "expo-navigation-bar": "~3.0.7",
     "expo-router": "~3.5.20",
     "expo-splash-screen": "~0.27.5",

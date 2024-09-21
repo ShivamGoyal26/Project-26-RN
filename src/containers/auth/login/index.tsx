@@ -8,7 +8,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Login = () => {
   return (
-    <View className="flex-1 p-4 ">
+    <View className="flex-1 p-4">
       <View className="flex-row items-center justify-between">
         <Text className="text-2xl text-primary">Welcome</Text>
         <ThemeToggle />

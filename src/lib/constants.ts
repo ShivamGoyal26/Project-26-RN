@@ -19,4 +19,5 @@ export const NAV_THEME = {
 
 export const KEYS = {
   APP_THEME: "theme",
+  USER_ID: "userId",
 };
