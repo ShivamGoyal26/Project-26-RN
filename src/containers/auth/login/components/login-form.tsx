@@ -16,8 +16,16 @@ import { EyeOff } from "@/lib/icons/EyeOff";
 import { login } from "../services/login.service";
 import useGetUser from "@/hooks/useGetUser";
 import { useAuthStore } from "@/store/useAuthStore";
+import { useRouter } from "expo-router";
+import routes from "@/routes";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { KEYS } from "@/lib/constants";
+
+const STATIC_USERID = "2";
 
 const LoginForm = () => {
+  const router = useRouter();
+
   const {
     control,
     handleSubmit,
@@ -39,13 +47,14 @@ const LoginForm = () => {
   const userId = useAuthStore((state) => state.userId);
   const setUserId = useAuthStore((state) => state.setUserId);
 
-  const { data, isPending: penin, error } = useGetUser(userId);
+  // const { data, isPending: penin, error } = useGetUser(userId);
 
   const { mutate, isPending } = useMutation({
     mutationFn: login,
     onSuccess(response, payload) {
-      console.log(response);
-      setUserId("2");
+      setUserId(STATIC_USERID);
+      router.replace(routes.HOME);
+      AsyncStorage.setItem(KEYS.USER_ID, STATIC_USERID);
     },
     onError(error, variables, context) {
       console.error(error);

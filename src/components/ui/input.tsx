@@ -15,7 +15,7 @@ type InputProps = {
   className?: string;
   placeholderClassName?: string;
   trigger?: UseFormTrigger<any>;
-  field: ControllerRenderProps<any>;
+  field?: ControllerRenderProps<any>;
   LeftIcon?: () => React.ReactElement;
   RightIcon?: () => React.ReactElement;
   infoMessage?: string;
@@ -32,7 +32,7 @@ const Input = ({
   RightIcon,
   LeftIcon,
   infoMessage,
-  ...restprops
+  ...props
 }: InputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -60,7 +60,7 @@ const Input = ({
       <View
         className={cn(
           "flex-row h-12 items-center rounded-md font-medium border border-input px-3 text-base native:leading-[1.25] placeholder:text-muted-foreground file:border-0 file:bg-transparent file:font-medium web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2",
-          restprops.editable === false && "opacity-50 web:cursor-not-allowed",
+          props.editable === false && "opacity-50 web:cursor-not-allowed",
           inputStyle,
           isFocused && "border-secondary",
           error && "border-destructive",
@@ -73,13 +73,13 @@ const Input = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => {
             setIsFocused(false);
-            if (trigger) trigger(field.name);
+            if (trigger) trigger(field?.name);
           }}
           className={cn("flex-1  h-12 text-foreground ")}
           placeholderClassName={cn(" text-foreground ", placeholderClassName)}
-          {...restprops}
-          value={field.value}
-          onChangeText={field.onChange}
+          {...props}
+          value={field?.value}
+          onChangeText={field?.onChange}
         />
 
         <TouchableOpacity>{RightIcon && <RightIcon />}</TouchableOpacity>
