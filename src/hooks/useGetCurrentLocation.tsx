@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import * as Location from "expo-location";
 import { Alert, AppState, Linking } from "react-native";
 
@@ -11,6 +11,7 @@ const useGetCurrentLocation = () => {
   const appState = useRef(AppState.currentState); // Track the current app state
 
   const getCurrentLocation = useCallback(async () => {
+    console.log("getCurrentLocation");
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
       Alert.alert(

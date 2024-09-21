@@ -1,3 +1,3 @@
 export default {
-  HOME: "/(tabs)/home",
+  HOME: "/(main)/(tabs)/home",
 };

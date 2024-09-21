@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { Search } from "@/lib/icons/Search";
@@ -17,6 +18,7 @@ const Header = () => {
         placeholder="search products"
         className="flex-1"
       />
+      <ThemeToggle />
     </View>
   );
 };
