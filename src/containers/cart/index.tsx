@@ -1,12 +1,15 @@
+import useGetCurrentLocation from "@/hooks/useGetCurrentLocation";
 import { View } from "react-native";
+import CategoriesList from "../home/components/CategoriesLlist";
+import CustomHeader from "@/components/CustomHeader";
 
 // Files
-import { Text } from "@/components/ui/text";
 
 const Cart = () => {
   return (
     <View className="p-4 flex-1">
-      <Text>Cart</Text>
+      <CustomHeader title="Categories" />
+      <CategoriesList />
     </View>
   );
 };

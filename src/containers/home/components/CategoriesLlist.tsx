@@ -1,17 +1,25 @@
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { FlatList, View } from "react-native";
+import FastImage from "react-native-fast-image";
+
+// Files
 import useGetCategories from "../hooks/useGetCategories";
 import { Text } from "@/components/ui/text";
 import Wrapper from "@/components/Wrapper";
-import FastImage from "react-native-fast-image";
 
-const CategoriesList = () => {
+type CategoriesListProps = {
+  hide?: boolean;
+};
+
+const CategoriesList = ({ hide }: CategoriesListProps) => {
   const { data, isPending, isError, error } = useGetCategories();
 
   return (
     <Wrapper isError={isError} isPending={isPending} error={error?.message}>
-      <Text className="text-foreground text-2xl font-raleway-semibold mb-5">
-        Categories
-      </Text>
+      {hide ? null : (
+        <Text className="text-foreground text-2xl font-raleway-semibold mb-5">
+          Categories
+        </Text>
+      )}
       <FlatList
         contentContainerStyle={{ gap: 20 }}
         columnWrapperStyle={{ justifyContent: "space-between" }}

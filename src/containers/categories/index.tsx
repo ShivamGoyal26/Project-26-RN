@@ -1,12 +1,14 @@
 import { View } from "react-native";
 
 // Files
-import { Text } from "@/components/ui/text";
+import CustomHeader from "@/components/CustomHeader";
+import CategoriesList from "../home/components/CategoriesLlist";
 
 const Categories = () => {
   return (
     <View className="p-4 flex-1">
-      <Text>Categories</Text>
+      <CustomHeader className="mb-10" title="Categories" />
+      <CategoriesList hide />
     </View>
   );
 };
