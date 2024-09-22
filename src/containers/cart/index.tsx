@@ -1,4 +1,3 @@
-import useGetCurrentLocation from "@/hooks/useGetCurrentLocation";
 import { View } from "react-native";
 import CategoriesList from "../home/components/CategoriesLlist";
 import CustomHeader from "@/components/CustomHeader";
