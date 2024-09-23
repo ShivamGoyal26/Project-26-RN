@@ -14,7 +14,6 @@ import { Lock } from "@/lib/icons/Lock";
 import { Eye } from "@/lib/icons/Eye";
 import { EyeOff } from "@/lib/icons/EyeOff";
 import { login } from "../services/login.service";
-import useGetUser from "@/hooks/useGetUser";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useRouter } from "expo-router";
 import routes from "@/routes";

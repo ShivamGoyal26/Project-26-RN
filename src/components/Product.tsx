@@ -3,8 +3,19 @@ import { View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Text } from "./ui/text";
 import { Button } from "./ui/button";
+import { useCartStore } from "@/store/useCartStore";
+import { useMemo } from "react";
 
 const Product = ({ product }: { product: Post }) => {
+  const addToCart = useCartStore((state) => state.addToCart);
+  const deleteFromCart = useCartStore((state) => state.deleteFromCart);
+  const cart = useCartStore((state) => state.cart);
+
+  const addedProduct = useMemo(
+    () => cart.find((item) => item.productId === product.id),
+    [cart, product.id]
+  );
+
   return (
     <View className="flex-1 m-2">
       <View className="h-60 w-full overflow-hidden rounded-xl">
@@ -20,9 +31,23 @@ const Product = ({ product }: { product: Post }) => {
         {product.title}
       </Text>
 
-      <Button className="mt-5">
-        <Text>{"Add to Cart"}</Text>
-      </Button>
+      <View className="flex-row mt-5 gap-3">
+        <Button
+          onPress={() => addToCart(parseInt(product.id))}
+          className=" flex-1"
+        >
+          <Text> {addedProduct ? addedProduct.quantity : "Add to Cart"}</Text>
+        </Button>
+        {addedProduct && (
+          <Button
+            variant={"destructive"}
+            onPress={() => deleteFromCart(parseInt(product.id))}
+            className="w-16"
+          >
+            <Text> {"-"}</Text>
+          </Button>
+        )}
+      </View>
     </View>
   );
 };

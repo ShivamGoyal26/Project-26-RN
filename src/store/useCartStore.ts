@@ -25,7 +25,7 @@ const initialState: State = {
 };
 
 // Zustand store definition with immer
-export const useAuthStore = create<State & Actions>((set, get) => ({
+export const useCartStore = create<State & Actions>((set, get) => ({
   ...initialState,
 
   addToCart: (productId: number) => {

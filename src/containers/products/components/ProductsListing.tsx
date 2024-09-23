@@ -1,7 +1,7 @@
 import Product from "@/components/Product";
 import Wrapper from "@/components/Wrapper";
 import useGetCategories from "@/containers/home/hooks/useGetCategories";
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 
 const ProductsListing = () => {
   const { isPending, isError, error, data } = useGetCategories();

@@ -8,12 +8,21 @@ import { cn } from "@/lib/utils";
 type CustomHeaderProps = {
   title: string;
   className?: string;
+  LeftIcon?: () => LucideIcon;
+  RightIcon?: () => LucideIcon;
 };
 
-const CustomHeader = ({ title, className }: CustomHeaderProps) => {
+const CustomHeader = ({
+  title,
+  className,
+  LeftIcon,
+  RightIcon,
+}: CustomHeaderProps) => {
   return (
-    <View className={cn(className)}>
-      <Text className="text-2xl">{title}</Text>
+    <View className={cn(className, "flex-row items-center")}>
+      {LeftIcon && <LeftIcon />}
+      <Text className="text-2xl flex-1">{title}</Text>
+      {RightIcon && <RightIcon />}
     </View>
   );
 };
