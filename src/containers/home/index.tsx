@@ -5,7 +5,7 @@ import { View } from "react-native";
 import Header from "./components/Header";
 import { LocateFixedIcon } from "@/lib/icons/Location";
 import { Text } from "@/components/ui/text";
-import CategoriesList from "./components/CategoriesLlist";
+import CategoriesList from "./components/CategoriesListing";
 
 const Home = () => {
   const { location, locationName } = useGetCurrentLocation();

@@ -2,7 +2,7 @@ import { View } from "react-native";
 
 // Files
 import CustomHeader from "@/components/CustomHeader";
-import CategoriesList from "../home/components/CategoriesLlist";
+import CategoriesList from "../home/components/CategoriesListing";
 
 const Categories = () => {
   return (

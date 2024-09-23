@@ -1,7 +1,7 @@
-import Home from "@/containers/home";
+import Products from "@/containers/products";
 
 const HomeRoute = () => {
-  return <Home />;
+  return <Products />;
 };
 
 export default HomeRoute;

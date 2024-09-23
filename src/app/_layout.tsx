@@ -2,11 +2,13 @@ import "../../global.css";
 
 import { Theme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
+import NetInfo from "@react-native-community/netinfo";
+import { onlineManager } from "@tanstack/react-query";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import * as SplashScreen from "expo-splash-screen";
-import { PortalHost } from "@rn-primitives/portal";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { PortalHost } from "@rn-primitives/portal";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Files
@@ -28,6 +30,12 @@ export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
+
+onlineManager.setEventListener((setOnline) => {
+  return NetInfo.addEventListener((state) => {
+    setOnline(!!state.isConnected);
+  });
+});
 
 // Prevent the splash screen from auto-hiding before getting the color scheme.
 SplashScreen.preventAutoHideAsync();

@@ -4,7 +4,7 @@ const endpoints = {
   posts: "/posts",
 };
 
-type Post = {
+export type Post = {
   userId: string;
   id: string;
   title: string;
