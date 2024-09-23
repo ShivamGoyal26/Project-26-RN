@@ -10,6 +10,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { PortalHost } from "@rn-primitives/portal";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Files
 import { NAV_THEME } from "../lib/constants";
@@ -50,28 +51,30 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-        <SafeAreaProvider>
-          <SafeAreaView
-            edges={["top"]}
-            style={{
-              flex: 1,
-              backgroundColor: isDarkColorScheme
-                ? DARK_THEME.colors.background
-                : LIGHT_THEME.colors.background,
-            }}
-          >
-            <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-            {/* <Stack.Screen
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <SafeAreaProvider>
+            <SafeAreaView
+              edges={["top"]}
+              style={{
+                flex: 1,
+                backgroundColor: isDarkColorScheme
+                  ? DARK_THEME.colors.background
+                  : LIGHT_THEME.colors.background,
+              }}
+            >
+              <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+              {/* <Stack.Screen
               name="index"
               options={{
                 title: "Starter Base",
                 headerRight: () => <ThemeToggle />,
               }}
             /> */}
-            <Stack screenOptions={{ headerShown: false }} />
-            <PortalHost />
-          </SafeAreaView>
-        </SafeAreaProvider>
+              <Stack screenOptions={{ headerShown: false }} />
+              <PortalHost />
+            </SafeAreaView>
+          </SafeAreaProvider>
+        </GestureHandlerRootView>
       </ThemeProvider>
     </QueryClientProvider>
   );
